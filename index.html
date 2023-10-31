@@ -31,59 +31,33 @@
     <div id="top-text">Press 'W' if you Die</div>
 
     <!-- Full-screen iframe -->
-    <iframe id="fullscreen-iframe" src="www.unblockedgames23.site"></iframe>
+    <iframe id="fullscreen-iframe" src=""></iframe>
+
+    <!-- Question set selection menu -->
+    <div id="question-set-menu">
+        <p>Select a question set:</p>
+        <select id="question-set-select">
+            <option value="socialStudies">Social Studies</option>
+            <option value="science">Science</option>
+            <!-- Add more question sets here -->
+        </select>
+        <button id="start-quiz">Start Quiz</button>
+    </div>
 
     <!-- JavaScript for handling 'w' keypress and question sets -->
     <script>
-        // Array of question sets
-        const questionSets = {
-            socialStudies: [
-                {
-                    question: "What is the capital of France?",
-                    choices: ["London", "Berlin", "Paris", "Madrid"],
-                    correctAnswer: "Paris"
-                },
-                // Add more social studies questions here
-            ],
-            science: [
-                {
-                    question: "What is the chemical symbol for water?",
-                    choices: ["H2O", "CO2", "O2", "N2"],
-                    correctAnswer: "H2O"
-                },
-                // Add more science questions here
-            ],
-            // Add more question sets here
-        };
-
-        let currentSet = 'socialStudies';
-        let currentIndex = -1; // Current question index
-
-        function displayQuestion() {
-            if (currentIndex < questionSets[currentSet].length - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-
-            const questionData = questionSets[currentSet][currentIndex];
-            const userAnswer = prompt(questionData.question + "\n" + questionData.choices.join(', '));
-
-            if (userAnswer === questionData.correctAnswer) {
-                alert("Correct! You answered correctly.");
-            } else {
-                alert("Incorrect. The correct answer is: " + questionData.correctAnswer);
-            }
-        }
-
-        window.addEventListener('keydown', (event) => {
-            if (event.key === 'w') {
-                displayQuestion();
-            }
+        // Rest of your JavaScript code...
+        document.getElementById('start-quiz').addEventListener('click', () => {
+            // Get the selected question set from the menu
+            const selectedSet = document.getElementById('question-set-select').value;
+            
+            // Set the current question set
+            currentSet = selectedSet;
+            
+            // Hide the question set selection menu and show the iframe
+            document.getElementById('question-set-menu').style.display = 'none';
+            document.getElementById('fullscreen-iframe').style.display = 'block';
         });
-
-        // You can show the iframe with some other event or logic, for example:
-        // document.getElementById('fullscreen-iframe').style.display = 'block';
     </script>
 </body>
 </html>
